@@ -1,2 +1,2 @@
 # dotfiles
-Config files and scripts for Linux and Windows
+Config files and scripts for Linux and Windows.
