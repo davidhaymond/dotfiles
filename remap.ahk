@@ -1,0 +1,2 @@
+CapsLock::LControl
+PrintScreen::RControl

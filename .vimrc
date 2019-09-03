@@ -28,3 +28,13 @@ syntax enable                   " Enable filetype-based syntax highlighting.
 inoremap kj <Esc>
 inoremap lkj <Esc>:w<CR>
 inoremap ;lkj <Esc>:wq<CR>
+
+" Plugins
+if has('win32')
+    let $PLUGGEDDIR = '~/vimfiles/plugged'
+else
+    let $PLUGGEDDIR = '~/.vim/plugged'
+endif
+call plug#begin($PLUGGEDDIR)
+    Plug 'https://github.com/PProvost/vim-ps1.git'
+call plug#end()
