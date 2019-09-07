@@ -1,12 +1,18 @@
 #!/bin/sh
 
-if [ "$1" = "-i" ] || [ "$1" = "--install" ]; then
-    echo do something
-fi
+# Update the repo
+git pull
 
 printf "%b\n" "\e[36;1mBacking up existing dotfiles...\e[0m"
-mv --interactive --verbose ~/.gitconfig ~/.gitconfig.bak
-mv --interactive --verbose ~/.vimrc ~/.vimrc.bak
+if [ ! -L ~/.gitconfig ]
+then
+    mv --interactive --verbose ~/.gitconfig ~/.gitconfig.bak
+fi
+
+if [ ! -L ~/.vimrc ]
+then
+    mv --interactive --verbose ~/.vimrc ~/.vimrc.bak
+fi
 
 printf "%b\n" "\e[36;1mCreating symlinks...\e[0m"
 ln --force --no-dereference --symbolic --verbose $PWD/.gitconfig ~/.gitconfig
