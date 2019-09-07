@@ -1,0 +1,4 @@
+*.ps1   text
+*.sh    text    eol=lf
+*.md    text
+*.ahk   text
