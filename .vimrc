@@ -37,4 +37,5 @@ else
 endif
 call plug#begin($PLUGGEDDIR)
     Plug 'https://github.com/PProvost/vim-ps1.git'
+    Plug 'https://github.com/scrooloose/nerdtree.git'
 call plug#end()
