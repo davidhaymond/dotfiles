@@ -28,6 +28,11 @@ syntax enable                   " Enable filetype-based syntax highlighting.
 inoremap kj <Esc>
 inoremap lkj <Esc>:w<CR>
 inoremap ;lkj <Esc>:wq<CR>
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+nnoremap <silent> <Leader>f :NERDTreeToggle<CR>
 
 " Plugins
 if has('win32')
@@ -38,4 +43,5 @@ endif
 call plug#begin($PLUGGEDDIR)
     Plug 'https://github.com/PProvost/vim-ps1.git'
     Plug 'https://github.com/scrooloose/nerdtree.git'
+    Plug 'https://github.com/christoomey/vim-tmux-navigator.git'
 call plug#end()
