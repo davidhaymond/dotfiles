@@ -24,9 +24,6 @@ set smarttab                    " When <Tab> is pressed at the beginning of a li
 filetype plugin indent on       " Enable filetype detection, plugins, and indenting.
 syntax enable                   " Enable filetype-based syntax highlighting.
 
-" Use Unix line endings
-set fileformat=unix
-
 " Key mappings
 inoremap kj <Esc>
 inoremap lkj <Esc>:w<CR>
