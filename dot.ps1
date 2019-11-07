@@ -15,6 +15,10 @@ $dotfiles = @(
     @{
         Target = "$PSScriptRoot\.vimrc"
         Link   = "~\_vimrc"
+    },
+    @{
+        Target = "$PSScriptRoot\Microsoft.PowerShell_profile.ps1"
+        Link   = $PROFILE
     }
 )
 
