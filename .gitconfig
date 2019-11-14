@@ -3,3 +3,4 @@
 	email = 35580802+davidhaymond@users.noreply.github.com
 [core]
 	eol = lf
+	autocrlf = false
