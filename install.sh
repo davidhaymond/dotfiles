@@ -17,9 +17,17 @@ then
 fi
 
 printf "%b\n" "\e[36;1mCreating symlinks...\e[0m"
+if [ ! -d ~/.shell ]; then
+    mkdir ~/.shell
+fi
+
 ln --force --no-dereference --symbolic --verbose $PWD/.gitconfig ~/.gitconfig
 ln --force --no-dereference --symbolic --verbose $PWD/.vimrc ~/.vimrc
 ln --force --no-dereference --symbolic --verbose $PWD/.tmux.conf ~/.tmux.conf
+ln --force --no-dereference --symbolic --verbose $PWD/bash/.bashrc ~/.bashrc
+ln --force --no-dereference --symbolic --verbose $PWD/bash/functions ~/.shell/functions
+ln --force --no-dereference --symbolic --verbose $PWD/bash/aliases ~/.shell/aliases
+. $PWD/bash/.bashrc
 
 # Install vim plugins
 printf "%b\n" "\e[36;1mInstalling Vim plugins...\e[0m"

@@ -1,0 +1,11 @@
+update-dotfiles () {
+    pushd ~/.dotfiles
+    bash install.sh
+    popd
+}
+
+new-key () {
+    ssh-keygen -t ed25519 -a 64 -C haymondtechnologies@gmail.com -f ~/.ssh/id_ed25519
+    printf "%b\n" "\e[36;1mPublic key:\e[0m"
+    cat ~/.ssh/id_ed25519.pub
+}
