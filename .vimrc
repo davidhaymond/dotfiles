@@ -43,7 +43,10 @@ else
     let $PLUGGEDDIR = '~/.vim/plugged'
 endif
 call plug#begin($PLUGGEDDIR)
-    Plug 'https://github.com/PProvost/vim-ps1.git'
-    Plug 'https://github.com/scrooloose/nerdtree.git'
-    Plug 'https://github.com/christoomey/vim-tmux-navigator.git'
+    " Filetype plugins
+    Plug 'PProvost/vim-ps1'                 " PowerShell
+
+    " Additional features
+    Plug 'scrooloose/nerdtree'              " File tree/browser
+    Plug 'christoomey/vim-tmux-navigator'   " Tmux shortcut integration
 call plug#end()
