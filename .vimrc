@@ -45,8 +45,22 @@ endif
 call plug#begin($PLUGGEDDIR)
     " Filetype plugins
     Plug 'PProvost/vim-ps1'                 " PowerShell
+    Plug 'pangloss/vim-javascript'          " JavaScript
+    Plug 'plasticboy/vim-markdown'          " Markdown
+
+    " Writing experience
+    Plug 'junegunn/goyo.vim'                " Centered, distraction-free writing
+    Plug 'junegunn/limelight.vim'           " Spotlight the current paragraph
 
     " Additional features
-    Plug 'scrooloose/nerdtree'              " File tree/browser
-    Plug 'christoomey/vim-tmux-navigator'   " Tmux shortcut integration
+    Plug 'scrooloose/nerdtree'                              " File tree/browser
+    Plug 'christoomey/vim-tmux-navigator'                   " Tmux shortcut integration
+    Plug 'suan/vim-instant-markdown', {'for': 'markdown'}   " Markdown previews
+
+    " Colorschemes
+    Plug 'tomasr/molokai'                   " Molokai
 call plug#end()
+
+" Plugin-related options
+colorscheme molokai                 " Molokai colorscheme
+let g:instant_markdown_port = 8080  " Enables localhost in Crostini for vim-instant-markdown
