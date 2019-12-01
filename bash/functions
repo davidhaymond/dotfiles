@@ -9,3 +9,8 @@ new-key () {
     printf "%b\n" "\e[36;1mPublic key:\e[0m"
     cat ~/.ssh/id_ed25519.pub
 }
+
+load-keys () {
+    eval `ssh-agent`
+    ssh-add
+}
