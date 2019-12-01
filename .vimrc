@@ -10,6 +10,8 @@ set ttimeout                    " Time out for <Esc> key codes.
 set timeoutlen=500              " Wait 500 milliseconds before timing out a mapping.
 set ttimeoutlen=100             " Wait 100 milliseconds before timing out an <Esc> key code.
 set display=truncate            " Show @@@ in the last line if it is truncated.
+set number                      " Enable line numbers
+set relativenumber              " Use relative line numbers
 
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
