@@ -32,6 +32,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get install git nodejs tmux vim xdg-utils -y   # xdg-utils is needed for vim-instant-markdown plugin
+sudo npm install -g npm
 sudo npm install -g instant-markdown-d
 
 
@@ -47,7 +48,7 @@ else
     pushd ~
     git clone https://github.com/davidhaymond/dotfiles.git .dotfiles
     cd .dotfiles
-    git remote set-url origin git@github.com:davidhaymond/dotfiles.git
+    git remote set-url --push origin git@github.com:davidhaymond/dotfiles.git
 fi
 
 bash install.sh

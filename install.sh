@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install symlinks
 printf "%b\n" "\e[36;1mBacking up existing dotfiles...\e[0m"
@@ -6,14 +6,16 @@ if [ ! -L ~/.gitconfig ]; then
     mv --interactive --verbose ~/.gitconfig ~/.gitconfig.bak
 fi
 
-if [ ! -L ~/.vimrc ]
-then
+if [ ! -L ~/.vimrc ]; then
     mv --interactive --verbose ~/.vimrc ~/.vimrc.bak
 fi
 
-if [ ! -L ~/.tmux.conf ]
-then
+if [ ! -L ~/.tmux.conf ]; then
     mv --interactive --verbose ~/.tmux.conf ~/.tmux.conf.bak
+fi
+
+if [ ! -L ~/.bashrc ]; then
+    mv --interactive --verbose ~/.bashrc ~/.bashrc.bak
 fi
 
 printf "%b\n" "\e[36;1mCreating symlinks...\e[0m"
@@ -27,7 +29,6 @@ ln --force --no-dereference --symbolic --verbose $PWD/.tmux.conf ~/.tmux.conf
 ln --force --no-dereference --symbolic --verbose $PWD/bash/.bashrc ~/.bashrc
 ln --force --no-dereference --symbolic --verbose $PWD/bash/functions ~/.shell/functions
 ln --force --no-dereference --symbolic --verbose $PWD/bash/aliases ~/.shell/aliases
-. ~/.bashrc
 
 # Install vim plugins
 printf "%b\n" "\e[36;1mInstalling Vim plugins...\e[0m"
@@ -38,5 +39,5 @@ else
     vim -c "PlugUpgrade | PlugUpdate | quit | quit"
 fi
 
-printf "%b\n" "\e[33;1mUse \e[35;1mrm -ir ~/.*.bak\e[33;1m to remove backups.\e[0m"
-printf "%b\n" "\e[32mDotfile installation completed.\e[0m"
+printf "%b\n" "\e[33;1mUse \e[35;1mrm -ir ~/.*.bak\e[33;1m to remove backups.\e[0m\n\n"
+printf "%b\n" "\e[32mDotfile installation completed. Restart the shell or type \e[35;1m. ~/.bashrc\e[0;32m to load shell environment.\e[0m"
