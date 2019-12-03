@@ -106,6 +106,11 @@ if [ -f ~/.shell/functions ]; then
     . ~/.shell/functions
 fi
 
+# Environment variables
+if [ -f ~/.shell/envs ]; then
+    . ~/.shell/envs
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
