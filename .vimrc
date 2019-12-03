@@ -63,7 +63,7 @@ call plug#end()
 
 " Plugin-related options
 " ----------------------
-colorscheme molokai                 " Molokai colorscheme
+silent! colorscheme molokai                 " Molokai colorscheme
 
 " vim-instant-markdown options
 let g:instant_markdown_slow = 1     " Slower preview updates
