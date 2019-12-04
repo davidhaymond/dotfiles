@@ -14,3 +14,7 @@ load-keys () {
     eval `ssh-agent`
     ssh-add
 }
+
+clone () {
+    git clone git@github.com:$1.git
+}
