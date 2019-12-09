@@ -12,6 +12,7 @@ set ttimeoutlen=100             " Wait 100 milliseconds before timing out an <Es
 set display=truncate            " Show @@@ in the last line if it is truncated.
 set number                      " Enable line numbers
 set relativenumber              " Use relative line numbers
+set linebreak                   " Wrap at word boundaries
 
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
@@ -28,8 +29,6 @@ syntax enable                   " Enable filetype-based syntax highlighting.
 
 " Key mappings
 inoremap kj <Esc>
-inoremap lkj <Esc>:w<CR>
-inoremap ;lkj <Esc>:wq<CR>
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-H> <C-W>h
@@ -47,6 +46,7 @@ call plug#begin($PLUGGEDDIR)
     Plug 'PProvost/vim-ps1'                 " PowerShell
     Plug 'pangloss/vim-javascript'          " JavaScript
     Plug 'plasticboy/vim-markdown'          " Markdown
+    Plug 'cespare/vim-toml'                 " TOML
 
     " Writing experience
     Plug 'junegunn/goyo.vim'                " Centered, distraction-free writing
