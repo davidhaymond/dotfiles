@@ -32,8 +32,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get install git nodejs tmux vim xdg-utils -y   # xdg-utils is needed for vim-instant-markdown plugin
-sudo npm update -g npm
-sudo npm install -g instant-markdown-d
+sudo npm install -g npm instant-markdown-d
 
 
 # Install dotfiles
