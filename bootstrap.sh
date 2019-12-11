@@ -16,13 +16,11 @@ if [ ! -f /etc/apt/trusted.gpg.d/nodesource.gpg ]; then
 fi
 
 NODESOURCE_PATH="/etc/apt/sources.list.d/nodesource.list"
-if [ ! -f $NODESOURCE_PATH ]; then
-    sudo apt-get install lsb-release -y
-    VERSION="node_10.x"
-    DISTRO="$(lsb_release -cs)"
-    echo "deb https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee $NODESOURCE_PATH
-    echo "deb-src https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee -a $NODESOURCE_PATH
-fi
+sudo apt-get install lsb-release -y
+VERSION="node_12.x"
+DISTRO="$(lsb_release -cs)"
+echo "deb https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee $NODESOURCE_PATH
+echo "deb-src https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee -a $NODESOURCE_PATH
 
 
 # Install packages
