@@ -47,6 +47,7 @@ call plug#begin($PLUGGEDDIR)
     Plug 'pangloss/vim-javascript'          " JavaScript
     Plug 'plasticboy/vim-markdown'          " Markdown
     Plug 'cespare/vim-toml'                 " TOML
+    Plug 'mustache/vim-mustache-handlebars' " Mustache/Handlebars
 
     " Writing experience
     Plug 'junegunn/goyo.vim'                " Centered, distraction-free writing
