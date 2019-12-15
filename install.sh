@@ -35,5 +35,5 @@ else
     vim -c "PlugUpgrade | PlugUpdate | quit | quit"
 fi
 
-printf "%b\n" "\e[33;1mUse \e[35;1mrm -ir ~/.*.bak\e[33;1m to remove backups.\e[0m\n\n"
+printf "%b\n" "\e[32mUse \e[35;1mrm -ir ~/.*.bak\e[32m to remove backups.\e[0m\n"
 printf "%b\n" "\e[32mDotfile installation completed. Restart the shell or type \e[35;1m. ~/.bashrc\e[0;32m to load shell environment.\e[0m"
