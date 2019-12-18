@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Update dotfiles repo
+git pull
+
 # Install symlinks
 printf "%b\n" "\e[36;1mBacking up existing dotfiles...\e[0m"
 if [ ! -L ~/.gitconfig ]; then

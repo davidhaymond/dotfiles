@@ -35,12 +35,9 @@ sudo npm install -g npm instant-markdown-d browser-sync
 # Install dotfiles
 # ----------------
 
-if [ -d ~/.dotfiles ]; then
-    pushd ~/.dotfiles
-    git pull
-else
+if [ ! -d ~/.dotfiles ]; then
     # Clone with HTTPS so no password is required,
-    # and then change the remote URL to SSH
+    # and then change the remote push URL to SSH
     pushd ~
     git clone https://github.com/davidhaymond/dotfiles.git .dotfiles
     cd .dotfiles
