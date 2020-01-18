@@ -37,16 +37,19 @@ sudo apt-get install git nodejs tmux vim xdg-utils -y   # xdg-utils is needed fo
 sudo npm install -g npm instant-markdown-d browser-sync
 
 
-# Install dotfiles
-# ----------------
+# Clone or update dotfiles repo
+# -----------------------------
 
 if [ ! -d ~/.dotfiles ]; then
+    pushd ~
+
     # Clone with HTTPS so no password is required,
     # and then change the remote push URL to SSH
-    pushd ~
     git clone https://github.com/davidhaymond/dotfiles.git .dotfiles
     cd .dotfiles
     git remote set-url --push origin git@github.com:davidhaymond/dotfiles.git
+else
+    pushd ~/.dotfiles
 fi
 
 bash install.sh
