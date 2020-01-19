@@ -31,6 +31,9 @@ scoop update *
 # Install additional packages
 scoop install gpmdp hyper keepass-pps lmir-tech-console nodejs telegram vim vimtutor vscode
 
+# Uninstall aria2 to revert to scoop's built-in download client
+scoop uninstall aria2
+
 # Add Visual Studio Code context menu option to Windows Explorer
 $regPath = Resolve-Path -Path ~\scoop\apps\vscode\current\vscode-install-context.reg
 reg.exe import $regPath
