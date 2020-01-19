@@ -16,7 +16,7 @@ else {
 }
 
 # Install core packages required for adding custom buckets
-scoop install 7zip git
+scoop install aria2 7zip git
 
 # Add buckets
 scoop bucket add extras
