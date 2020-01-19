@@ -9,7 +9,7 @@ elseif ($IsMacOS) {
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
 # Install scoop if needed
-$isScoopInstalled = Test-Path -Path ~\scoop -PathType Container
+$isScoopInstalled = Test-Path -Path ~\scoop\apps\scoop\current\bin\scoop.ps1
 if ($isScoopInstalled) {
     scoop update
     scoop update *
