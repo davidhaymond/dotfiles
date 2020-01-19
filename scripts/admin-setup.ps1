@@ -1,7 +1,7 @@
 #Requires -RunAsAdministrator
 
 # Allow PowerShell to run scripts
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force -ErrorAction SilentlyContinue
 
 # Remap keyboard:
 #
