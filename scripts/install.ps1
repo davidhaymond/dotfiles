@@ -1,3 +1,5 @@
+#Requires -PSEdition Core
+
 Push-Location -Path ~\.dotfiles
 # Update dotfiles repo
 git pull
@@ -38,6 +40,7 @@ if (!(Test-Path -Path $plugPath)) {
         New-Item -ItemType Directory -Path $autoloadDir -Force | Out-Null
     }
     Invoke-RestMethod -Uri "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" -OutFile $plugPath -UseBasicParsing
+    Start-Sleep -Seconds 2
     vim -c "PlugInstall | quit | quit"
 }
 else {

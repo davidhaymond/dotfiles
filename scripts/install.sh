@@ -40,7 +40,8 @@ ln --force --no-dereference --symbolic --verbose shell ~/.shell
 
 # Install vim plugins
 if [ ! -d ~/.vim/autoload ]; then
-    curl --create-dirs -o ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    curl -sSL --create-dirs -o ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    sleep 2
     vim -c "PlugInstall | quit | quit"
 else
     vim -c "PlugUpgrade | PlugUpdate | quit | quit"

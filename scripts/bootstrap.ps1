@@ -60,6 +60,7 @@ else {
 $adminSetupPath = Resolve-Path -Path .\scripts\admin-setup.ps1
 $adminSetupArgs = "-NoProfile -File `"$adminSetupPath`""
 Start-Process -FilePath powershell.exe -ArgumentList $adminSetupArgs -Verb RunAs -Wait
+$restartNeeded = $LASTEXITCODE -eq 3010
 
 # Creating symlinks without admin privileges is only supported in
 # PowerShell 6 or later.
@@ -70,5 +71,19 @@ else {
     $installPath = Resolve-Path -Path .\scripts\install.ps1
     $installArgs = "-nop -f `"$installPath`""
     Start-Process -FilePath pwsh-preview.cmd -ArgumentList $installArgs -NoNewWindow -Wait
+}
+
+if ($RestartNeeded) {
+    $finishSetupPath = Resolve-Path -Path .\finish-setup.ps1
+    $regParams = @{
+        Path = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce'
+        Name = 'Finish dotfiles installation'
+        Value = "pwsh-preview.cmd -NoProfile -File `"$finishSetupPath`""
+    }
+    Set-ItemProperty @regParams
+    Restart-Computer
+}
+else {
+    .\scripts\finish-setup.ps1
 }
 Pop-Location

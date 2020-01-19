@@ -27,3 +27,9 @@ Set-ItemProperty @devModeRegParams | Out-Null
 
 # Install the latest version of PowerShell (version 7 is currently behind the -Preview flag)
 Invoke-Expression "& { $(Invoke-RestMethod -Uri https://aka.ms/install-powershell.ps1) } -UseMSI -Preview -AddExplorerContextMenu -Quiet"
+
+# Install the Windows Subsystem for Linux
+$result = Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
+if ($result.RestartNeeded) {
+    exit 3010
+}
