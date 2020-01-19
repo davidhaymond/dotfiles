@@ -5,15 +5,15 @@ git pull
 $existingDotfiles = ""
 $dotfiles = @(
     @{
-        Target = ".\.gitconfig"
+        Target = "$PWD\.gitconfig"
         Link   = "~\.gitconfig"
     },
     @{
-        Target = ".\.vimrc"
+        Target = "$PWD\.vimrc"
         Link   = "~\_vimrc"
     },
     @{
-        Target = ".\Profile.ps1"
+        Target = "$PWD\Profile.ps1"
         Link   = "~\Documents\PowerShell\Profile.ps1"
     }
 )
