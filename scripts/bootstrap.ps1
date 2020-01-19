@@ -15,7 +15,7 @@ if (!$isScoopInstalled) {
 }
 
 # Install aria2 to speed up downloads on older versions of PowerShell
-if ($PSVersionTable.PSVersion -lt 6) {
+if ($PSEdition -ne 'Core') {
     scoop install aria2
 }
 
@@ -34,7 +34,7 @@ scoop update *
 scoop install gpmdp hyper keepass-pps lmir-tech-console nodejs telegram vim vimtutor vscode etcher
 
 # Uninstall aria2 to revert to scoop's built-in download client
-if ($PSVersionTable.PSVersion -lt 6) {
+if ($PSEdition -ne 'Core') {
     scoop uninstall aria2
 }
 
@@ -62,7 +62,7 @@ Start-Process -FilePath powershell.exe -ArgumentList $adminSetupArgs -Verb RunAs
 
 # Creating symlinks without admin privileges is only supported in
 # PowerShell 6 or later.
-if ($PSVersionTable.PSVersion -ge 6) {
+if ($PSEdition -eq 'Core') {
     .\scripts\install.ps1
 }
 else {
