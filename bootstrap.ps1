@@ -1,18 +1,19 @@
 if ($IsLinux) {
-    $platform = 'Linux'
+    throw "This script supports Windows only. To install dotfiles on Linux, run `"curl https://setup.davidhaymond.dev | bash`"."
 }
 elseif ($IsMacOS) {
-    $platform = 'macOS'
-}
-else {
-    $platform = 'Windows'
-}
-if ($platform -ne 'Windows') {
-    throw "This script supports Windows only. To install dotfiles on $platform, run `"curl https://setup.davidhaymond.dev`"."
+    throw "This script supports Windows only. This dotfiles repo is not yet supported on macOS."
 }
 
-# Install scoop
-Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
+# Install scoop if needed
+$isScoopInstalled = Test-Path -Path ~\scoop -PathType Container
+if ($isScoopInstalled) {
+    scoop update
+    scoop update *
+}
+else {
+    Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
+}
 
 # Install core packages required for adding custom buckets
 scoop install 7zip git
@@ -29,8 +30,8 @@ $regPath = Resolve-Path -Path ~\scoop\apps\vscode\current\vscode-install-context
 reg.exe import $regPath
 
 # Clone dotfiles repo
-$dotfilesExists = Test-Path -Path ~\.dotfiles -PathType Container
-if (!$dotfilesExists) {
+$isDotfilesInstalled = Test-Path -Path ~\.dotfiles -PathType Container
+if (!$isDotfilesInstalled) {
     Push-Location -Path ~
     git clone https://github.com/davidhaymond/dotfiles.git .dotfiles
     $dotfilesDir = Get-Item -Path .dotfiles -Force
@@ -47,5 +48,5 @@ $initScriptPath = Resolve-Path -Path .\intialize-windows.ps1
 $args = "-NoProfile -ExecutionPolicy Bypass -File `"$initPath`""
 Start-Process -FilePath powershell.exe -ArgumentList $args -Verb RunAs -Wait
 
-& ./install.ps1
+.\install.ps1
 Pop-Location
