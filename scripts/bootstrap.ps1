@@ -57,7 +57,8 @@ else {
 }
 
 # Run global initialization script
-$adminSetupArgs = "-NoProfile -File .\scripts\admin-setup.ps1"
+$adminSetupPath = Resolve-Path -Path .\scripts\admin-setup.ps1
+$adminSetupArgs = "-NoProfile -File `"$adminSetupPath`""
 Start-Process -FilePath powershell.exe -ArgumentList $adminSetupArgs -Verb RunAs -Wait
 
 # Creating symlinks without admin privileges is only supported in
@@ -66,7 +67,8 @@ if ($PSEdition -eq 'Core') {
     .\scripts\install.ps1
 }
 else {
-    $installArgs = "-nop -f .\scripts\install.ps1"
+    $installPath = Resolve-Path -Path .\scripts\install.ps1
+    $installArgs = "-nop -f `"$installPath`""
     Start-Process -FilePath pwsh-preview.cmd -ArgumentList $installArgs -NoNewWindow -Wait
 }
 Pop-Location
