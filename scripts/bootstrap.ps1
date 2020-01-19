@@ -10,20 +10,20 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
 # Install scoop if needed
 $isScoopInstalled = Test-Path -Path ~\scoop\apps\scoop\current\bin\scoop.ps1
-if ($isScoopInstalled) {
-    scoop update
-    scoop update *
-}
-else {
+if (!$isScoopInstalled) {
     Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
 }
 
 # Install core packages required for adding custom buckets
-scoop install 7zip git
+scoop install git
 
 # Add buckets
 scoop bucket add extras
 scoop bucket add david https://github.com/davidhaymond/scoop-bucket.git
+
+# Update scoop
+scoop update
+scoop update *
 
 # Install additional packages
 scoop install gpmdp hyper keepass-pps lmir-tech-console nodejs telegram vim vimtutor vscode
