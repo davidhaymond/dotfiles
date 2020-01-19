@@ -73,7 +73,7 @@ else {
 }
 
 if ($adminProcess.ExitCode -eq 3010) {
-    $finishSetupPath = Resolve-Path -Path .\finish-setup.ps1
+    $finishSetupPath = Resolve-Path -Path .\scripts\finish-setup.ps1
     $regParams = @{
         Path = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce'
         Name = 'Finish dotfiles installation'

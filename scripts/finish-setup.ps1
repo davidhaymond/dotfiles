@@ -1,4 +1,4 @@
-$debianPath = scoop which debian.exe
+$debianPath = &{scoop which debian.exe} 6> $null
 if (!$debianPath) {
     $appxPath = New-TemporaryFile
     Invoke-RestMethod -Uri https://aka.ms/wsl-debian-gnulinux -OutFile $appxPath
