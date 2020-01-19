@@ -59,8 +59,7 @@ else {
 # Run global initialization script
 $adminSetupPath = Resolve-Path -Path .\scripts\admin-setup.ps1
 $adminSetupArgs = "-NoProfile -File `"$adminSetupPath`""
-Start-Process -FilePath powershell.exe -ArgumentList $adminSetupArgs -Verb RunAs -Wait
-$restartNeeded = $LASTEXITCODE -eq 3010
+$adminProcess = Start-Process -FilePath powershell.exe -ArgumentList $adminSetupArgs -Verb RunAs -Wait -PassThru
 
 # Creating symlinks without admin privileges is only supported in
 # PowerShell 6 or later.
@@ -73,7 +72,7 @@ else {
     Start-Process -FilePath pwsh-preview.cmd -ArgumentList $installArgs -NoNewWindow -Wait
 }
 
-if ($RestartNeeded) {
+if ($adminProcess.ExitCode -eq 3010) {
     $finishSetupPath = Resolve-Path -Path .\finish-setup.ps1
     $regParams = @{
         Path = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce'
