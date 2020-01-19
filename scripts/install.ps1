@@ -13,8 +13,8 @@ $dotfiles = @(
         Link   = "~\_vimrc"
     },
     @{
-        Target = ".\Microsoft.PowerShell_profile.ps1"
-        Link   = $PROFILE
+        Target = ".\Profile.ps1"
+        Link   = "~\Documents\PowerShell\Profile.ps1"
     }
 )
 
