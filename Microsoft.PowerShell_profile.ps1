@@ -19,9 +19,7 @@ filter ConvertFrom-Base64String {
 }
 
 function update-dotfiles {
-    Push-Location -Path ~\.dotfiles
-    & .\install.ps1
-    Pop-Location
+    ~\.dotfiles\scripts\install.ps1
 }
 
 function new-key {

@@ -1,18 +1,19 @@
+Push-Location -Path ~\.dotfiles
 # Update dotfiles repo
 git pull
 
 $existingDotfiles = ""
 $dotfiles = @(
     @{
-        Target = "$PSScriptRoot\.gitconfig"
+        Target = ".\.gitconfig"
         Link   = "~\.gitconfig"
     },
     @{
-        Target = "$PSScriptRoot\.vimrc"
+        Target = ".\.vimrc"
         Link   = "~\_vimrc"
     },
     @{
-        Target = "$PSScriptRoot\Microsoft.PowerShell_profile.ps1"
+        Target = ".\Microsoft.PowerShell_profile.ps1"
         Link   = $PROFILE
     }
 )
@@ -46,4 +47,5 @@ else {
 if ($backedUpDotfiles) {
     Write-Warning -Message "The following files were backed up:`n$backedUpDotfiles"
 }
+Pop-Location
 Write-Information -MessageData "Installation/update completed. Profile updates will not take effect until PowerShell is restarted." -InformationAction Continue

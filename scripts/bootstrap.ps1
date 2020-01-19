@@ -44,9 +44,9 @@ else {
 }
 
 # Run global initialization script
-$initScriptPath = Resolve-Path -Path .\intialize-windows.ps1
-$args = "-NoProfile -ExecutionPolicy Bypass -File `"$initPath`""
+$initScriptPath = Resolve-Path -Path .\scripts\admin-setup.ps1
+$args = "-NoProfile -ExecutionPolicy Bypass -File `"$initScriptPath`""
 Start-Process -FilePath powershell.exe -ArgumentList $args -Verb RunAs -Wait
 
-.\install.ps1
+.\scripts\install.ps1
 Pop-Location

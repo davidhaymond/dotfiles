@@ -52,5 +52,5 @@ else
     pushd ~/.dotfiles
 fi
 
-bash install.sh
+bash scripts/install.sh
 popd

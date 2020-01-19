@@ -1,7 +1,5 @@
 update-dotfiles () {
-    pushd ~/.dotfiles > /dev/null
-    bash install.sh
-    popd > /dev/null
+    bash ~/.dotfiles/scripts/install.sh
 }
 
 new-key () {
