@@ -14,6 +14,9 @@ if (!$isScoopInstalled) {
     Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
 }
 
+# Install aria2 to speed up downloads
+scoop install aria2
+
 # Install core packages required for adding custom buckets
 scoop install git
 
