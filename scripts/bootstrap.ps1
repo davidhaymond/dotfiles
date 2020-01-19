@@ -14,8 +14,10 @@ if (!$isScoopInstalled) {
     Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
 }
 
-# Install aria2 to speed up downloads
-scoop install aria2
+# Install aria2 to speed up downloads on older versions of PowerShell
+if ($PSVersionTable.PSVersion -lt 6) {
+    scoop install aria2
+}
 
 # Install core packages required for adding custom buckets
 scoop install git
@@ -29,10 +31,12 @@ scoop update
 scoop update *
 
 # Install additional packages
-scoop install gpmdp hyper keepass-pps lmir-tech-console nodejs telegram vim vimtutor vscode
+scoop install gpmdp hyper keepass-pps lmir-tech-console nodejs telegram vim vimtutor vscode etcher
 
 # Uninstall aria2 to revert to scoop's built-in download client
-scoop uninstall aria2
+if ($PSVersionTable.PSVersion -lt 6) {
+    scoop uninstall aria2
+}
 
 # Add Visual Studio Code context menu option to Windows Explorer
 $regPath = Resolve-Path -Path ~\scoop\apps\vscode\current\vscode-install-context.reg
@@ -53,9 +57,16 @@ else {
 }
 
 # Run global initialization script
-$initScriptPath = Resolve-Path -Path .\scripts\admin-setup.ps1
-$args = "-NoProfile -ExecutionPolicy Bypass -File `"$initScriptPath`""
-Start-Process -FilePath powershell.exe -ArgumentList $args -Verb RunAs -Wait
+$adminSetupArgs = "-NoProfile -File .\scripts\admin-setup.ps1"
+Start-Process -FilePath powershell.exe -ArgumentList $adminSetupArgs -Verb RunAs -Wait
 
-.\scripts\install.ps1
+# Creating symlinks without admin privileges is only supported in
+# PowerShell 6 or later.
+if ($PSVersionTable.PSVersion -ge 6) {
+    .\scripts\install.ps1
+}
+else {
+    $installArgs = "-nop -f .\scripts\install.ps1"
+    Start-Process -FilePath pwsh-preview.cmd -ArgumentList $installArgs -NoNewWindow -Wait
+}
 Pop-Location

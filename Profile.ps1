@@ -29,6 +29,11 @@ function new-key {
     Get-Content -Path "$keyPath.pub"
 }
 
+function load-keys {
+    ssh-agent
+    ssh-add
+}
+
 function clone {
     [CmdletBinding()]
     param(

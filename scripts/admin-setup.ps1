@@ -12,7 +12,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force
                0x1d,0xe0,0x2a,0xe0,0x1d,0xe0,0x37,0xe0,
                0x1d,0xe0,0x54,0x00,0x3a,0x00,0x52,0xe0,
                0x22,0xe0,0x45,0x00,0x00,0x00,0x00,0x00
-New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layout' -Name 'Scancode Map' -Value $map
+Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layout' -Name 'Scancode Map' -Value $map | Out-Null
 
 # Enable Windows Developer Mode
 $devModeRegParams = @{
