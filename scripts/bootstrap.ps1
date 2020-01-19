@@ -5,6 +5,9 @@ elseif ($IsMacOS) {
     throw "This script supports Windows only. This dotfiles repo is not yet supported on macOS."
 }
 
+# Temporarily allow scripts to run so scoop can install
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
 # Install scoop if needed
 $isScoopInstalled = Test-Path -Path ~\scoop -PathType Container
 if ($isScoopInstalled) {
