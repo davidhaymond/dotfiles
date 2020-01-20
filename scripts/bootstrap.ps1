@@ -54,6 +54,7 @@ if (!$isDotfilesInstalled) {
 }
 else {
     Push-Location -Path ~\.dotfiles
+    git pull
 }
 
 # Run global initialization script
@@ -80,6 +81,9 @@ if ($adminProcess.ExitCode -eq 3010) {
         Value = "pwsh-preview.cmd -NoProfile -File `"$finishSetupPath`""
     }
     Set-ItemProperty @regParams
+
+    Write-Information -MessageData "Restarting in 5 seconds..." -InformationAction Continue
+    Start-Sleep -Seconds 5
     Restart-Computer
 }
 else {
