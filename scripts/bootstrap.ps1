@@ -10,7 +10,12 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
 # Clear .gitconfig to avoid Git errors
 if (Test-Path -Path ~\.gitconfig) {
-    Move-Item -Path ~\.gitconfig -Destination ~\.gitconfig.bak
+    if ((Get-Item -Path ~\.gitconfig).LinkType -eq 'SymbolicLink') {
+        Remove-Item -Path ~\.gitconfig -Force
+    }
+    else {
+        Rename-Item -Path ~\.gitconfig -NewName .gitconfig.bak -Force
+    }
 }
 
 # Install scoop if needed
