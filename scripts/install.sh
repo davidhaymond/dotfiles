@@ -31,17 +31,16 @@ if [ ! -L ~/.bash_profile ]; then
     backups=1
 fi
 
-ln --force --no-dereference --symbolic --verbose .gitconfig ~/.gitconfig
-ln --force --no-dereference --symbolic --verbose .vimrc ~/.vimrc
-ln --force --no-dereference --symbolic --verbose .tmux.conf ~/.tmux.conf
-ln --force --no-dereference --symbolic --verbose .bashrc ~/.bashrc
-ln --force --no-dereference --symbolic --verbose .bash_profile ~/.bash_profile
-ln --force --no-dereference --symbolic --verbose shell ~/.shell
+ln --force --no-dereference --symbolic --verbose $PWD/.gitconfig ~/.gitconfig
+ln --force --no-dereference --symbolic --verbose $PWD/.vimrc ~/.vimrc
+ln --force --no-dereference --symbolic --verbose $PWD/.tmux.conf ~/.tmux.conf
+ln --force --no-dereference --symbolic --verbose $PWD/.bashrc ~/.bashrc
+ln --force --no-dereference --symbolic --verbose $PWD/.bash_profile ~/.bash_profile
+ln --force --no-dereference --symbolic --verbose $PWD/shell ~/.shell
 
 # Install vim plugins
 if [ ! -d ~/.vim/autoload ]; then
     curl -sSL --create-dirs -o ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    sleep 2
     vim -c "PlugInstall | quit | quit"
 else
     vim -c "PlugUpgrade | PlugUpdate | quit | quit"
