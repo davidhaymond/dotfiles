@@ -8,6 +8,11 @@ elseif ($IsMacOS) {
 # Temporarily allow scripts to run so scoop can install
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
+# Clear .gitconfig to avoid Git errors
+if (Test-Path -Path ~\.gitconfig) {
+    Move-Item -Path ~\.gitconfig -Destination ~\.gitconfig.bak
+}
+
 # Install scoop if needed
 $isScoopInstalled = Test-Path -Path ~\scoop\apps\scoop\current\bin\scoop.ps1
 if (!$isScoopInstalled) {
