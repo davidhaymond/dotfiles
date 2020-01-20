@@ -1,4 +1,4 @@
-#Requires -PSEdition Core
+#Requires -Version 6.0
 
 Push-Location -Path ~\.dotfiles
 # Update dotfiles repo

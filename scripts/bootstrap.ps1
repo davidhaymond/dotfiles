@@ -1,3 +1,5 @@
+#Requires -Version 6.0
+
 if ($IsLinux) {
     throw "This script supports Windows only. To install dotfiles on Linux, run `"curl https://setup.davidhaymond.dev | bash`"."
 }
@@ -24,11 +26,6 @@ if (!$isScoopInstalled) {
     Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
 }
 
-# Install aria2 to speed up downloads on older versions of PowerShell
-if ($PSEdition -ne 'Core') {
-    scoop install aria2
-}
-
 # Install core packages required for adding custom buckets
 scoop install git
 
@@ -42,11 +39,6 @@ scoop update *
 
 # Install additional packages
 scoop install gpmdp hyper keepass-pps lmir-tech-console nodejs telegram vim vimtutor vscode etcher
-
-# Uninstall aria2 to revert to scoop's built-in download client
-if ($PSEdition -ne 'Core') {
-    scoop uninstall aria2
-}
 
 # Add Visual Studio Code context menu option to Windows Explorer
 $regPath = Resolve-Path -Path ~\scoop\apps\vscode\current\vscode-install-context.reg
@@ -70,25 +62,17 @@ else {
 # Run global initialization script
 $adminSetupPath = Resolve-Path -Path .\scripts\admin-setup.ps1
 $adminSetupArgs = "-NoProfile -File `"$adminSetupPath`""
-$adminProcess = Start-Process -FilePath powershell.exe -ArgumentList $adminSetupArgs -Verb RunAs -Wait -PassThru
+$adminProcess = Start-Process -FilePath pwsh.exe -ArgumentList $adminSetupArgs -Verb RunAs -Wait -PassThru
 
-# Creating symlinks without admin privileges is only supported in
-# PowerShell 6 or later.
-if ($PSEdition -eq 'Core') {
-    .\scripts\install.ps1
-}
-else {
-    $installPath = Resolve-Path -Path .\scripts\install.ps1
-    $installArgs = "-nop -f `"$installPath`""
-    Start-Process -FilePath pwsh-preview.cmd -ArgumentList $installArgs -NoNewWindow -Wait
-}
+# Run dotfiles install script
+.\scripts\install.ps1
 
 if ($adminProcess.ExitCode -eq 3010) {
     $finishSetupPath = Resolve-Path -Path .\scripts\finish-setup.ps1
     $regParams = @{
         Path = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce'
         Name = 'Finish dotfiles installation'
-        Value = "powershell.exe -NoProfile -File `"$finishSetupPath`""
+        Value = "pwsh.exe -NoProfile -File `"$finishSetupPath`""
     }
     Set-ItemProperty @regParams
 

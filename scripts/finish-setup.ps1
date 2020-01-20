@@ -1,3 +1,5 @@
+#Requires -Version 6.0
+
 $debianPath = &{scoop which debian.exe} 6> $null
 if (!$debianPath) {
     $appxPath = New-TemporaryFile
