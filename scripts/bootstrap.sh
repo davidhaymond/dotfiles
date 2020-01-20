@@ -37,6 +37,11 @@ sudo apt-get install curl git nodejs tmux vim xdg-utils -y   # xdg-utils is need
 sudo npm install -g npm instant-markdown-d browser-sync
 
 
+# Configure system Git settings
+# -----------------------------
+sudo git config --system core.autocrlf input
+
+
 # Clone or update dotfiles repo
 # -----------------------------
 
