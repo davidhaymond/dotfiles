@@ -88,7 +88,7 @@ if ($adminProcess.ExitCode -eq 3010) {
     $regParams = @{
         Path = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce'
         Name = 'Finish dotfiles installation'
-        Value = "pwsh-preview.cmd -NoProfile -File `"$finishSetupPath`""
+        Value = "powershell.exe -NoProfile -File `"$finishSetupPath`""
     }
     Set-ItemProperty @regParams
 
