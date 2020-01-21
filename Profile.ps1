@@ -23,7 +23,11 @@ function update-dotfiles {
 }
 
 function new-key {
-    $keyPath = Resolve-Path -Path ~\.ssh\id_ed25519
+    $sshDir = Join-Path -Path (Resolve-Path ~) -ChildPath .ssh
+    if (!(Test-Path $sshDir)) {
+        New-Item -Path $sshDir -ItemType Directory -Force | Out-Null
+    }
+    $keyPath = Join-Path -Path $sshDir -ChildPath id_ed25519
     ssh-keygen -t ed25519 -a 64 -C haymondtechnologies@gmail.com -f "$keyPath"
     Write-Output "%b\n" "\e[36;1mPublic key:\e[0m"
     Get-Content -Path "$keyPath.pub"

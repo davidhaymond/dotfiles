@@ -26,6 +26,9 @@ if (!(Test-Path -Path $devModeRegParams.Path)) {
 }
 Set-ItemProperty @devModeRegParams | Out-Null
 
+# Enable the SSH Agent
+Set-Service -Name ssh-agent -StartupType Manual
+
 
 # Install the Windows Subsystem for Linux
 $result = Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
