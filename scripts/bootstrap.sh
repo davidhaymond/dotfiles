@@ -33,8 +33,8 @@ echo "deb-src https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee -a $N
 
 sudo apt-get update -y
 sudo apt-get dist-upgrade -y
-sudo apt-get install curl git nodejs tmux vim xdg-utils -y   # xdg-utils is needed for vim-instant-markdown plugin
-sudo npm install -g npm instant-markdown-d browser-sync
+sudo apt-get install git nodejs tmux vim xdg-utils -y   # xdg-utils is needed for vim-instant-markdown plugin
+sudo npm install -g npm instant-markdown-d browser-sync netlify-cli
 
 
 # Configure system Git settings
