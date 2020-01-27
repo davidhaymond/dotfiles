@@ -48,6 +48,7 @@ call plug#begin($PLUGGEDDIR)
     Plug 'plasticboy/vim-markdown'          " Markdown
     Plug 'cespare/vim-toml'                 " TOML
     Plug 'mustache/vim-mustache-handlebars' " Mustache/Handlebars
+    Plug 'posva/vim-vue'                    " Vue
 
     " Writing experience
     Plug 'junegunn/goyo.vim'                " Centered, distraction-free writing
