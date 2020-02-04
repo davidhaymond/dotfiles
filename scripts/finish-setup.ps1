@@ -1,5 +1,7 @@
 #Requires -Version 6.0
 
+wsl.exe --set-default-version 2
+
 $debianPath = &{scoop which debian.exe} 6> $null
 if (!$debianPath) {
     $appxPath = New-TemporaryFile
