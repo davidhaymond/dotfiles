@@ -31,7 +31,8 @@ Set-Service -Name ssh-agent -StartupType Manual
 
 
 # Install the Windows Subsystem for Linux
-$result = Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
+$features = ('Microsoft-Windows-Subsystem-Linux', 'VirtualMachinePlatform')
+$result = Enable-WindowsOptionalFeature -Online -FeatureName $features -NoRestart
 if ($result.RestartNeeded) {
     exit 3010
 }
