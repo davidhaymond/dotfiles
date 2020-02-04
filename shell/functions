@@ -2,6 +2,16 @@ update-dotfiles () {
     bash ~/.dotfiles/scripts/install.sh
 }
 
+check-dotfiles () {
+    pushd ~/.dotfiles > /dev/null
+    if [[ -n "$(git status --porcelain)" ]]; then
+        echo -e "\e[33;1mThe dotfiles repo has uncommitted changes:\e[0m"
+        git status --short
+    fi
+    popd > /dev/null
+}
+check-dotfiles
+
 new-key () {
     ssh-keygen -t ed25519 -a 64 -C haymondtechnologies@gmail.com -f ~/.ssh/id_ed25519
     printf "%b\n" "\e[36;1mPublic key:\e[0m"
