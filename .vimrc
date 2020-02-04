@@ -42,13 +42,8 @@ else
     let $PLUGGEDDIR = '~/.vim/plugged'
 endif
 call plug#begin($PLUGGEDDIR)
-    " Filetype plugins
-    Plug 'PProvost/vim-ps1'                 " PowerShell
-    Plug 'pangloss/vim-javascript'          " JavaScript
-    Plug 'plasticboy/vim-markdown'          " Markdown
-    Plug 'cespare/vim-toml'                 " TOML
-    Plug 'mustache/vim-mustache-handlebars' " Mustache/Handlebars
-    Plug 'posva/vim-vue'                    " Vue
+    " Language pack
+    Plug 'sheerun/vim-polyglot'
 
     " Writing experience
     Plug 'junegunn/goyo.vim'                " Centered, distraction-free writing
