@@ -10,4 +10,4 @@ if (!$debianPath) {
     $appxPath | Remove-Item -Force
 }
 debian.exe install
-debian.exe run "sudo apt-get update -y; sudo apt-get install curl -y; curl -sSL https://setup.davidhaymond.dev/linux | bash"
+debian.exe run "sudo apt-get update -y; sudo apt-get install curl -y; curl -sSL https://dotfiles.davidhaymond.dev/linux | bash"
