@@ -18,6 +18,10 @@ $dotfiles = @(
         Target = "$PWD\Profile.ps1"
         Link   = "~\Documents\PowerShell\Profile.ps1"
     }
+    @{
+        Target = "$PWD\windows-terminal-profiles.json"
+        Link   = "~\AppData\Local\Microsoft\Windows Terminal\profiles.json"
+    }
 )
 
 # Symlink dotfiles
