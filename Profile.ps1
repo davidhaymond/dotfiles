@@ -22,6 +22,16 @@ function update-dotfiles {
     ~\.dotfiles\scripts\install.ps1
 }
 
+function check-dotfiles {
+    Push-Location ~\.dotfiles | Out-Null
+        if (git status --porcelain) {
+            Write-Information "The dotfiles repo has uncommitted changes:" -InformationAction Continue
+                git status --short
+        }
+    Pop-Location | Out-Null
+}
+check-dotfiles
+
 function new-key {
     $sshDir = Join-Path -Path (Resolve-Path ~) -ChildPath .ssh
     if (!(Test-Path $sshDir)) {
