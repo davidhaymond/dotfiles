@@ -1,3 +1,4 @@
+#!/bin/bash
 update-dotfiles () {
     bash ~/.dotfiles/scripts/install.sh
 }
