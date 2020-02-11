@@ -45,10 +45,10 @@ $regPath = Resolve-Path -Path ~\scoop\apps\vscode\current\vscode-install-context
 reg.exe import $regPath
 
 # Install Visual Studio Code extensions
-code --install-extension DotJoshJohnson.xml `
-     --install-extension ms-vscode-remote.remote-wsl `
-     --install-extension ms-vscode.powershell `
-     --install-extension vscodevim.vim
+code --force --install-extension DotJoshJohnson.xml `
+             --install-extension ms-vscode-remote.remote-wsl `
+             --install-extension ms-vscode.powershell `
+             --install-extension vscodevim.vim
 
 # Clone dotfiles repo
 $isDotfilesInstalled = Test-Path -Path ~\.dotfiles -PathType Container
