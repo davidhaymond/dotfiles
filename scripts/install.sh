@@ -1,42 +1,33 @@
 #!/bin/bash
-pushd ~/.dotfiles > /dev/null
+function link () {
+    local target=".dotfiles/$1"
+    if [ ! "$2" ]; then
+        local linkname="$1"
+    else
+        local linkname="$2"
+    fi
+    if [ -L "$linkname" ]; then
+        ln --symbolic --no-dereference --force "$target" "$linkname"
+    else
+        ln --symbolic --no-dereference --backup "$target" "$linkname"
+    fi
+}
 
 # Update dotfiles repo
-git pull
+pushd ~/.dotfiles > /dev/null
+if ! git pull -q --ff-only ; then
+    echo -e "\e[33mUnable to update dotfiles without merging.\e[0m"
+fi
 
 # Install symlinks
-backups=0
-if [ ! -L ~/.gitconfig ]; then
-    mv --interactive --verbose ~/.gitconfig ~/.gitconfig.bak
-    backups=1
-fi
+cd ~
 
-if [ ! -L ~/.vimrc ]; then
-    mv --interactive --verbose ~/.vimrc ~/.vimrc.bak
-    backups=1
-fi
-
-if [ ! -L ~/.tmux.conf ]; then
-    mv --interactive --verbose ~/.tmux.conf ~/.tmux.conf.bak
-    backups=1
-fi
-
-if [ ! -L ~/.bashrc ]; then
-    mv --interactive --verbose ~/.bashrc ~/.bashrc.bak
-    backups=1
-fi
-
-if [ ! -L ~/.bash_profile ]; then
-    mv --interactive --verbose ~/.bash_profile ~/.bash_profile.bak
-    backups=1
-fi
-
-ln --force --no-dereference --symbolic --verbose $PWD/.gitconfig ~/.gitconfig
-ln --force --no-dereference --symbolic --verbose $PWD/.vimrc ~/.vimrc
-ln --force --no-dereference --symbolic --verbose $PWD/.tmux.conf ~/.tmux.conf
-ln --force --no-dereference --symbolic --verbose $PWD/.bashrc ~/.bashrc
-ln --force --no-dereference --symbolic --verbose $PWD/.bash_profile ~/.bash_profile
-ln --force --no-dereference --symbolic --verbose $PWD/shell ~/.shell
+link .gitconfig
+link .vimrc
+link .tmux.conf
+link .bashrc
+link .bash_profile
+link shell .shell
 
 # Install vim plugins
 if [ ! -d ~/.vim/autoload ]; then
@@ -46,9 +37,4 @@ else
     vim -c "PlugUpgrade | PlugUpdate | quit | quit"
 fi
 
-if [ "$backups" -eq 1 ]; then
-    printf "%b\n" "\e[32mUse \e[35;1mrm -ir ~/.*.bak\e[0;32m to remove backups.\e[0m"
-fi
-
 popd > /dev/null
-printf "%b\n" "\e[32mDotfile installation completed. Restart the shell or type \e[35;1m. ~/.bashrc\e[0;32m to load shell environment.\e[0m"

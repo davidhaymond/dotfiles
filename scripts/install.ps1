@@ -2,24 +2,26 @@
 
 Push-Location -Path ~\.dotfiles
 # Update dotfiles repo
-git pull
+git pull -q --ff-only
+if ($LASTEXITCODE -ne 0) {
+    "`e[33mUnable to update dotfiles without merging.`e[0m"
+}
 
-$existingDotfiles = ""
 $dotfiles = @(
     @{
-        Target = "$PWD\.gitconfig"
+        Target = ".dotfiles\.gitconfig"
         Link   = "~\.gitconfig"
     },
     @{
-        Target = "$PWD\.vimrc"
+        Target = ".dotfiles\.vimrc"
         Link   = "~\_vimrc"
     },
     @{
-        Target = "$PWD\Profile.ps1"
+        Target = "..\..\.dotfiles\Profile.ps1"
         Link   = "~\Documents\PowerShell\Profile.ps1"
     }
     @{
-        Target = "$PWD\windows-terminal-profiles.json"
+        Target = "..\..\..\..\.dotfiles\windows-terminal-profiles.json"
         Link   = "~\AppData\Local\Microsoft\Windows Terminal\profiles.json"
     }
 )
@@ -31,7 +33,6 @@ $dotfiles | ForEach-Object -Process {
         $dotfile = Get-Item -Path $Path
         $backupPath = $dotfile.Name + '.bak'
         $dotfile | Rename-Item -NewName $backupPath -Force
-        $existingDotfiles += "$Path -> $backupPath`n"
     }
     New-Item -ItemType SymbolicLink -Path $_.Link -Target $_.Target -Force | Out-Null
 }
@@ -43,16 +44,16 @@ if (!(Test-Path -Path $plugPath)) {
     if (!(Test-Path -Path $autoloadDir)) {
         New-Item -ItemType Directory -Path $autoloadDir -Force | Out-Null
     }
-    Invoke-RestMethod -Uri "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" -OutFile $plugPath -UseBasicParsing
-    Start-Sleep -Seconds 2
+    # Showing progress decreases download speed and adds visual clutter
+    $prevProgPref = $ProgressPreference
+    $ProgressPreference = 'SilentlyContinue'
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" -OutFile $plugPath
+    $ProgressPreference = $prevProgPref
+    Start-Sleep -Seconds 1
     vim -c "PlugInstall | quit | quit"
 }
 else {
     vim -c "PlugUpgrade | PlugUpdate | quit | quit"
 }
 
-if ($backedUpDotfiles) {
-    Write-Warning -Message "The following files were backed up:`n$backedUpDotfiles"
-}
 Pop-Location
-Write-Information -MessageData "Installation/update completed. Profile updates will not take effect until PowerShell is restarted." -InformationAction Continue
