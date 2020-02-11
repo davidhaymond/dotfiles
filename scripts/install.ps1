@@ -24,6 +24,10 @@ $dotfiles = @(
         Target = "..\..\..\..\.dotfiles\windows-terminal-profiles.json"
         Link   = "~\AppData\Local\Microsoft\Windows Terminal\profiles.json"
     }
+    @{
+        Target = "..\..\..\..\.dotfiles\vscode-settings.json"
+        Link   = "$env:AppData\Code\User\settings.json"
+    }
 )
 
 # Symlink dotfiles

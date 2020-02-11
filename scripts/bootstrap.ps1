@@ -44,6 +44,9 @@ scoop install gpmdp windows-terminal keepass-pps lmir-tech-console telegram vim 
 $regPath = Resolve-Path -Path ~\scoop\apps\vscode\current\vscode-install-context.reg
 reg.exe import $regPath
 
+# Install Visual Studio Code extensions
+code --install-extension vscodevim.vim
+
 # Clone dotfiles repo
 $isDotfilesInstalled = Test-Path -Path ~\.dotfiles -PathType Container
 if (!$isDotfilesInstalled) {

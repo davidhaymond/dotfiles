@@ -1,0 +1,11 @@
+{
+    "workbench.colorTheme": "Default Light+",
+    "git.path": "%USERPROFILE%\\scoop\\apps\\git\\current\\cmd\\git.exe",
+    "editor.minimap.enabled": false,
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": ["k", "j"],
+            "after": ["<Esc>"]
+        }
+    ]
+}
