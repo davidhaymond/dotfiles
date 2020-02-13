@@ -5,6 +5,12 @@ if [[ "$(uname)" = "0000" ]]; then
     umask 0022
 fi
 
+# Delete any existing .gitconfig symlink
+# to prevent Git errors caused by broken links
+if [ -L ~/.gitconfig ]; then
+    rm -f ~/.gitconfig
+fi
+
 
 # Update package cache
 # --------------------
