@@ -1,5 +1,5 @@
 # dotfiles
-My personal config files with installation scripts for Linux and Windows.
+My personal dotfiles collection.
 
 ## Installation
 
