@@ -31,7 +31,7 @@ sudo apt-get install lsb-release -qy
 VERSION="node_12.x"
 DISTRO="$(lsb_release -cs)"
 echo "deb https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee $NODESOURCE_PATH > /dev/null
-echo "deb-src https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee -a $NODESOURCE_PATH /dev/null
+echo "deb-src https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee -a $NODESOURCE_PATH > /dev/null
 
 
 # Install packages
