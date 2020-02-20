@@ -4,6 +4,27 @@
 # Allow PowerShell to run scripts
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force -ErrorAction SilentlyContinue
 
+
+# Install scoop if needed
+$isScoopInstalled = Test-Path -Path ~\scoop\apps\scoop\current\bin\scoop.ps1
+if (!$isScoopInstalled) {
+    Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
+}
+
+# Install core packages required for adding custom buckets
+scoop install git
+
+# Add buckets
+scoop bucket add extras
+
+# Update scoop
+scoop update
+scoop update *
+
+# Install global scoop packages
+scoop install vcredist2019 --global     # Windows Terminal prerequisite
+
+
 # Remap keyboard:
 #
 # - Caps Lock -> Control
