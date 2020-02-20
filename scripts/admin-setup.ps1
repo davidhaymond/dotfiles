@@ -23,6 +23,7 @@ scoop update *
 
 # Install global scoop packages
 scoop install vcredist2019 --global     # Windows Terminal prerequisite
+scoop uninstall vcredist2019 --global   # Don't need to keep the installer around
 
 
 # Remap keyboard:
