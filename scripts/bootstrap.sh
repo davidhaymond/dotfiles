@@ -39,7 +39,7 @@ echo "deb-src https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee -a $N
 
 sudo apt-get update -qy
 sudo apt-get dist-upgrade -qy
-sudo apt-get install git nodejs tmux vim xdg-utils -qy   # xdg-utils is needed for vim-instant-markdown plugin
+sudo apt-get install git nodejs tmux vim xdg-utils curl apt-transport-https -qy   # xdg-utils is needed for vim-instant-markdown plugin
 sudo npm install -gq npm instant-markdown-d browser-sync netlify-cli
 
 
