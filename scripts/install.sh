@@ -1,15 +1,9 @@
 #!/bin/bash
 function link () {
-    local target=".dotfiles/$1"
-    if [ ! "$2" ]; then
-        local linkname="$1"
+    if [ -L "$2" ]; then
+        ln --symbolic --no-dereference --force "$1" "$2"
     else
-        local linkname="$2"
-    fi
-    if [ -L "$linkname" ]; then
-        ln --symbolic --no-dereference --force "$target" "$linkname"
-    else
-        ln --symbolic --no-dereference --backup "$target" "$linkname"
+        ln --symbolic --no-dereference --backup "$1" "$2"
     fi
 }
 
@@ -22,12 +16,13 @@ fi
 # Install symlinks
 cd ~
 
-link .gitconfig
-link .vimrc
-link .tmux.conf
-link .bashrc
-link .bash_profile
-link shell .shell
+link    .dotfiles/.gitconfig        .gitconfig
+link    .dotfiles/.vimrc            .vimrc
+link    .dotfiles/.tmux.conf        .tmux.conf
+link    .dotfiles/.bashrc           .bashrc
+link    .dotfiles/.bash_profile     .bash_profile
+link    .dotfiles/shell             .shell
+link    ../.dotfiles/ssh_config     .ssh/config
 
 # Install vim plugins
 if [ ! -d ~/.vim/autoload ]; then
