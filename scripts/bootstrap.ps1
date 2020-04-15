@@ -27,7 +27,7 @@ if (!$isScoopInstalled) {
 }
 
 # Install core packages required for adding custom buckets
-scoop install git
+scoop install 7zip git
 
 # Add buckets
 scoop bucket add extras
@@ -38,7 +38,7 @@ scoop update
 scoop update *
 
 # Install additional packages
-scoop install gpmdp windows-terminal keepass-pps lmir-tech-console telegram vim vimtutor vscode etcher
+scoop install discord etcher gpmdp keepass-pps lmir-tech-console slack telegram vim vimtutor vscode windows-terminal
 
 # Add Visual Studio Code context menu option to Windows Explorer
 $regPath = Resolve-Path -Path ~\scoop\apps\vscode\current\vscode-install-context.reg
