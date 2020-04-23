@@ -21,8 +21,8 @@ $dotfiles = @(
         Link   = "~\Documents\PowerShell\Profile.ps1"
     }
     @{
-        Target = "..\..\..\..\.dotfiles\windows-terminal-profiles.json"
-        Link   = "~\AppData\Local\Microsoft\Windows Terminal\profiles.json"
+        Target = "..\..\..\..\.dotfiles\windows-terminal-settings.json"
+        Link   = "~\AppData\Local\Microsoft\Windows Terminal\settings.json"
     }
     @{
         Target = "..\..\..\..\.dotfiles\vscode-settings.json"
