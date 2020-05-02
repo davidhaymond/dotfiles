@@ -15,7 +15,9 @@ fi
 
 # Install symlinks
 cd ~
-
+if [ ! -e .ssh ]; then
+    mkdir .ssh
+fi
 link    .dotfiles/.gitconfig        .gitconfig
 link    .dotfiles/.vimrc            .vimrc
 link    .dotfiles/.tmux.conf        .tmux.conf
