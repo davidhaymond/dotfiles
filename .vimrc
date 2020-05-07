@@ -53,18 +53,10 @@ call plug#begin($PLUGGEDDIR)
     Plug 'scrooloose/nerdtree'                              " File tree/browser
     Plug 'christoomey/vim-tmux-navigator'                   " Tmux shortcut integration
     Plug 'suan/vim-instant-markdown', {'for': 'markdown'}   " Markdown previews
-
-    " Colorschemes
-    Plug 'tomasr/molokai'                   " Molokai
 call plug#end()
 
 " Plugin-related options
 " ----------------------
-silent! colorscheme molokai                 " Molokai colorscheme
 
 " vim-markdown options
 let g:vim_markdown_folding_disabled = 1
-
-" vim-instant-markdown options
-"let g:instant_markdown_slow = 1     " Slower preview updates
-let g:instant_markdown_port = 8080  " localhost:8080 is automatically forwarded to Crostini on Chrome OS, removing the need for g:instant_markdown_open_to_the_world
