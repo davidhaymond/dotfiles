@@ -1,4 +1,5 @@
-VisualHostKey=yes
+ServerAliveCountMax 30
+ServerAliveInterval 120
 
 Host pi
     User=david
