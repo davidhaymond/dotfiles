@@ -7,8 +7,8 @@ elseif ($IsMacOS) {
     throw "This script supports Windows only. This dotfiles repo is not yet supported on macOS."
 }
 
-# Temporarily allow scripts to run so scoop can install
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+# Allow scripts to run so scoop can install
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 # Clear .gitconfig to avoid Git errors
 if (Test-Path -Path ~\.gitconfig) {
@@ -27,28 +27,7 @@ if (!$isScoopInstalled) {
 }
 
 # Install core packages required for adding custom buckets
-scoop install 7zip git
-
-# Add buckets
-scoop bucket add extras
-scoop bucket add david https://github.com/davidhaymond/scoop-bucket.git
-
-# Update scoop
-scoop update
-scoop update *
-
-# Install additional packages
-scoop install discord etcher gpmdp keepass-pps lmir-tech-console slack telegram vim vimtutor vscode windows-terminal
-
-# Add Visual Studio Code context menu option to Windows Explorer
-$regPath = Resolve-Path -Path ~\scoop\apps\vscode\current\vscode-install-context.reg
-reg.exe import $regPath
-
-# Install Visual Studio Code extensions
-code --force --install-extension DotJoshJohnson.xml `
-             --install-extension ms-vscode-remote.remote-wsl `
-             --install-extension ms-vscode.powershell `
-             --install-extension vscodevim.vim
+scoop install git
 
 # Clone dotfiles repo
 $isDotfilesInstalled = Test-Path -Path ~\.dotfiles -PathType Container
@@ -73,20 +52,4 @@ $adminProcess = Start-Process -FilePath pwsh.exe -ArgumentList $adminSetupArgs -
 # Run dotfiles install script
 .\scripts\install.ps1
 
-if ($adminProcess.ExitCode -eq 3010) {
-    $finishSetupPath = Resolve-Path -Path .\scripts\finish-setup.ps1
-    $regParams = @{
-        Path = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce'
-        Name = 'Finish dotfiles installation'
-        Value = "pwsh.exe -NoProfile -File `"$finishSetupPath`""
-    }
-    Set-ItemProperty @regParams
-
-    Write-Information -MessageData "Restarting in 5 seconds..." -InformationAction Continue
-    Start-Sleep -Seconds 5
-    Restart-Computer
-}
-else {
-    .\scripts\finish-setup.ps1
-}
 Pop-Location
