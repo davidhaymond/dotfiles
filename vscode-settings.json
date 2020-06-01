@@ -8,5 +8,6 @@
             "after": ["<Esc>"]
         }
     ],
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "workbench.startupEditor": "none"
 }
