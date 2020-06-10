@@ -34,7 +34,7 @@
         "defaults":
         {
             "useAcrylic": true,
-            "acrylicOpacity": 0.6,
+            "acrylicOpacity": 0.8,
             "cursorShape": "emptyBox"
         },
         "list":
