@@ -60,3 +60,6 @@ function clone {
 
     git clone git@github.com:$Repo.git
 }
+
+New-Alias -Name 'reboot' -Value Restart-Computer -Option ReadOnly
+New-Alias -Name 'shutdown' -Value Stop-Computer -Option ReadOnly
