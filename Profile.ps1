@@ -63,3 +63,4 @@ function clone {
 
 New-Alias -Name 'reboot' -Value Restart-Computer -Option ReadOnly
 New-Alias -Name 'shutdown' -Value Stop-Computer -Option ReadOnly
+New-Alias -Name 'ms' -Value Measure-Object -Option ReadOnly
