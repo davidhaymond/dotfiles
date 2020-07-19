@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Handle WSL's bad default permissions
-if [[ "$(uname)" = "0000" ]]; then
+if [[ "$(umask)" = "0000" ]]; then
     umask 0022
 fi
 
