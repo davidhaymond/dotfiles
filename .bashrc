@@ -131,3 +131,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Set default cursor to be a nonblinking solid block
+echo -e "\e[2 q"

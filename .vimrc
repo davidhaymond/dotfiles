@@ -27,6 +27,11 @@ set smarttab                    " When <Tab> is pressed at the beginning of a li
 filetype plugin indent on       " Enable filetype detection, plugins, and indenting.
 syntax enable                   " Enable filetype-based syntax highlighting.
 
+" Change cursor shape in different modes
+let &t_SI .= "\e[6 q"           " INSERT mode
+let &t_SR .= "\e[4 q"           " REPLACE mode
+let &t_EI .= "\e[2 q"           " NORMAL mode
+
 " Key mappings
 inoremap kj <Esc>
 nnoremap <C-J> <C-W>j
