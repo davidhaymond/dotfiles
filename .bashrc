@@ -133,4 +133,4 @@ if ! shopt -oq posix; then
 fi
 
 # Set default cursor to be a nonblinking solid block
-echo -e "\e[2 q"
+echo -en "\e[2 q"
