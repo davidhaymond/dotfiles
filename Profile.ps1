@@ -66,4 +66,4 @@ New-Alias -Name 'shutdown' -Value Stop-Computer -Option ReadOnly
 New-Alias -Name 'ms' -Value Measure-Object -Option ReadOnly
 
 # Set default cursor to a nonblinking solid block
-echo "`e[2 q"
+Write-Host -NoNewline "`e[2 q"
