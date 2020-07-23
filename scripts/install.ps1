@@ -25,8 +25,8 @@ $dotfiles = @(
         Link   = "~\AppData\Local\Microsoft\Windows Terminal\settings.json"
     }
     @{
-        Target = "..\..\..\..\.dotfiles\vscode-settings.json"
-        Link   = "$env:AppData\Code\User\settings.json"
+        Target = "..\..\..\..\.dotfiles\vscodium-settings.json"
+        Link   = "$env:AppData\VSCodium\User\settings.json"
     }
 )
 
