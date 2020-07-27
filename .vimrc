@@ -13,6 +13,7 @@ set display=truncate            " Show @@@ in the last line if it is truncated.
 set number                      " Enable line numbers
 set relativenumber              " Use relative line numbers
 set linebreak                   " Wrap at word boundaries
+set backupcopy=yes              " Support tools that detect file changes
 
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
