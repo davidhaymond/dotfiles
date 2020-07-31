@@ -26,7 +26,7 @@ clone () {
 
 wttr() {
     # change Paris to your default location
-    local request="wttr.in/${1-Chehalis}?u"
+    local request="wttr.in/${1-Chehalis}?uF"
     [ "$(tput cols)" -lt 125 ] && request+='n'
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
