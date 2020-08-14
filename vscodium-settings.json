@@ -9,5 +9,6 @@
         }
     ],
     "editor.lineNumbers": "relative",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "files.hotExit": "off"
 }
