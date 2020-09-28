@@ -11,9 +11,6 @@ if [ -L ~/.gitconfig ]; then
     rm -f ~/.gitconfig
 fi
 
-# Configure system Git settings
-sudo git config --system core.autocrlf input
-
 # Clone or update dotfiles repo
 if [ ! -d ~/.dotfiles ]; then
     pushd ~ > /dev/null
