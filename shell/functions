@@ -10,7 +10,7 @@ check-dotfiles () {
 check-dotfiles
 
 new-key () {
-    ssh-keygen -t ed25519 -a 64 -C david@davidhaymond.dev -f ~/.ssh/id_ed25519
+    ssh-keygen -t ed25519 -a 128 -f ~/.ssh/id_ed25519
     echo -e "\e[36;1mPublic key:\e[0m"
     cat ~/.ssh/id_ed25519.pub
 }
@@ -26,7 +26,7 @@ clone () {
 
 wttr() {
     # change Paris to your default location
-    local request="wttr.in/${1-Chehalis}?uF"
+    local request="wttr.in/${1-Centralia}?uF"
     [ "$(tput cols)" -lt 125 ] && request+='n'
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
