@@ -6,7 +6,7 @@ My personal dotfiles collection.
 ##### Linux
 
 ```sh
-curl -sSL https://dotfiles.davidhaymond.dev/linux | bash
+curl -sSL https://raw.githubusercontent.com/davidhaymond/dotfiles/master/scripts/bootstrap.sh | bash
 ```
 
 
@@ -15,11 +15,11 @@ curl -sSL https://dotfiles.davidhaymond.dev/linux | bash
 If PowerShell 6+ isn't already installed, open Windows PowerShell as admin and run:
 
 ```powershell
-irm https://dotfiles.davidhaymond.dev/pwsh | iex
+iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -AddExplorerContextMenu -Quiet"
 ```
 
 Then open PowerShell 6 as your own account (not admin) and bootstrap the dotfiles:
 
 ```pwsh
-irm https://dotfiles.davidhaymond.dev/windows | iex
+irm https://raw.githubusercontent.com/davidhaymond/dotfiles/master/scripts/bootstrap.ps1 | iex
 ```
