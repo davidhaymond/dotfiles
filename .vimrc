@@ -28,6 +28,9 @@ set smarttab                    " When <Tab> is pressed at the beginning of a li
 filetype plugin indent on       " Enable filetype detection, plugins, and indenting.
 syntax enable                   " Enable filetype-based syntax highlighting.
 
+autocmd FileType html setlocal softtabstop=2 shiftwidth=2
+autocmd FileType htmldjango setlocal softtabstop=2 shiftwidth=2
+
 " Change cursor shape in different modes
 let &t_SI .= "\e[6 q"           " INSERT mode
 let &t_SR .= "\e[4 q"           " REPLACE mode
@@ -57,12 +60,4 @@ call plug#begin($PLUGGEDDIR)
 
     " Additional features
     Plug 'scrooloose/nerdtree'                              " File tree/browser
-    Plug 'christoomey/vim-tmux-navigator'                   " Tmux shortcut integration
-    Plug 'suan/vim-instant-markdown', {'for': 'markdown'}   " Markdown previews
 call plug#end()
-
-" Plugin-related options
-" ----------------------
-
-" vim-markdown options
-let g:vim_markdown_folding_disabled = 1
