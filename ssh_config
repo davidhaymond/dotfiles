@@ -1,12 +1,4 @@
+Include config.d/*
+
 ServerAliveCountMax 30
 ServerAliveInterval 120
-
-Host pi
-    User=pi
-    HostName=home.davidhaymond.dev
-    Port=59840
-    ForwardAgent=yes
-
-Host greenlane
-    User=ccadmin
-    HostName=greenlane.cascadepc.com
