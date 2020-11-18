@@ -65,5 +65,12 @@ New-Alias -Name 'reboot' -Value Restart-Computer -Option ReadOnly
 New-Alias -Name 'shutdown' -Value Stop-Computer -Option ReadOnly
 New-Alias -Name 'ms' -Value Measure-Object -Option ReadOnly
 
+function scup {
+    scoop update
+    if (!(scoop status | Select-String 'windows-terminal' -Quiet)) {
+        scoop update *
+    }
+}
+
 # Set default cursor to a nonblinking solid block
 Write-Host -NoNewline "`e[2 q"
