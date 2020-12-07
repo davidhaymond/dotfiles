@@ -18,12 +18,8 @@ cd ~
 if [ ! -e .ssh ]; then
     mkdir .ssh
 fi
-link    .dotfiles/.gitconfig        .gitconfig
-link    .dotfiles/.vimrc            .vimrc
-link    .dotfiles/.tmux.conf        .tmux.conf
-link    .dotfiles/.bashrc           .bashrc
-link    .dotfiles/.bash_profile     .bash_profile
-link    .dotfiles/shell             .shell
+link    .dotfiles/gitconfig         .gitconfig
+link    .dotfiles/vimrc             .vimrc
 link    ../.dotfiles/ssh_config     .ssh/config
 
 # Install vim plugins

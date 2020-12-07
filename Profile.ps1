@@ -38,7 +38,7 @@ function new-key {
         New-Item -Path $sshDir -ItemType Directory -Force | Out-Null
     }
     $keyPath = Join-Path -Path $sshDir -ChildPath id_ed25519
-    ssh-keygen -t ed25519 -a 64 -C david@davidhaymond.dev -f "$keyPath"
+    ssh-keygen -t ed25519 -a 512 -f "$keyPath"
     Write-Output "`e[36;1mPublic key:`e[0m"
     Get-Content -Path "$keyPath.pub"
 }

@@ -1,4 +1,3 @@
 #!/bin/bash
 alias update-dotfiles="bash ~/.dotfiles/scripts/install.sh"
-alias bootstrap-dotfiles="curl -sSL https://dotfiles.davidhaymond.dev/linux | bash"
 alias gs="git status"

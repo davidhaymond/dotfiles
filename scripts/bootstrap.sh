@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Handle WSL's bad default permissions
-if [[ "$(umask)" = "0000" ]]; then
-    umask 0022
-fi
-
 # Delete any existing .gitconfig symlink
 # to prevent Git errors caused by broken links
 if [ -L ~/.gitconfig ]; then
@@ -24,4 +19,14 @@ else
 fi
 
 bash scripts/install.sh
+
+# Source the shell scripts
+cat << EOF >> ~/.bashrc
+
+# Load custom shell scripts from dotfiles
+for f in ~/.dotfiles/shell/*
+    do source $f
+done
+EOF
+
 popd > /dev/null

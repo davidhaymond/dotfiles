@@ -1,6 +1,7 @@
 #Requires -Version 6.0
 
 Push-Location -Path ~\.dotfiles
+
 # Update dotfiles repo
 git pull -q --ff-only
 if ($LASTEXITCODE -ne 0) {
@@ -9,11 +10,11 @@ if ($LASTEXITCODE -ne 0) {
 
 $dotfiles = @(
     @{
-        Target = ".dotfiles\.gitconfig"
+        Target = ".dotfiles\gitconfig"
         Link   = "~\.gitconfig"
     },
     @{
-        Target = ".dotfiles\.vimrc"
+        Target = ".dotfiles\vimrc"
         Link   = "~\_vimrc"
     },
     @{
@@ -21,12 +22,8 @@ $dotfiles = @(
         Link   = "~\Documents\PowerShell\Profile.ps1"
     }
     @{
-        Target = "..\..\..\..\.dotfiles\windows-terminal-settings.json"
-        Link   = "~\AppData\Local\Microsoft\Windows Terminal\settings.json"
-    }
-    @{
-        Target = "..\..\..\..\.dotfiles\vscodium-settings.json"
-        Link   = "$env:AppData\VSCodium\User\settings.json"
+        Target = "..\..\..\..\.dotfiles\vscode-settings.json"
+        Link   = "$env:AppData\Code\User\settings.json"
     }
 )
 
