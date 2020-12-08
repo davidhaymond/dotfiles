@@ -7,5 +7,7 @@
     ],
     "editor.lineNumbers": "relative",
     "workbench.startupEditor": "none",
-    "files.hotExit": "off"
+    "files.hotExit": "off",
+    "files.insertFinalNewline": true,
+    "editor.renderFinalNewline": false
 }

@@ -20,12 +20,11 @@ fi
 
 bash scripts/install.sh
 
-# Source the shell scripts
-cat << EOF >> ~/.bashrc
+cat << 'EOF' >> ~/.bashrc
 
 # Load custom shell scripts from dotfiles
-for f in ~/.dotfiles/shell/*
-    do source $f
+for f in ~/.dotfiles/shell/*; do
+    source $f
 done
 EOF
 

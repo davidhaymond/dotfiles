@@ -21,6 +21,7 @@ fi
 link    .dotfiles/gitconfig         .gitconfig
 link    .dotfiles/vimrc             .vimrc
 link    ../.dotfiles/ssh_config     .ssh/config
+link    ../../../.dotfiles/vscode-settings.json .config/Code/User/settings.json
 
 # Install vim plugins
 if [ ! -d ~/.vim/autoload ]; then
