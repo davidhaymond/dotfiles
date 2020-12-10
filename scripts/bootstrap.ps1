@@ -41,7 +41,7 @@ if (!$isDotfilesInstalled) {
 }
 else {
     Push-Location -Path ~\.dotfiles
-    git pull
+    git pull --ff-only
 }
 
 # Run global initialization script

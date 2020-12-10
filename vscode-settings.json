@@ -9,5 +9,6 @@
     "workbench.startupEditor": "none",
     "files.hotExit": "off",
     "files.insertFinalNewline": true,
-    "editor.renderFinalNewline": false
+    "editor.renderFinalNewline": false,
+    "workbench.colorTheme": "Default Light+"
 }
