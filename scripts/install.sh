@@ -26,9 +26,9 @@ link    ../../../.dotfiles/vscode-settings.json .config/Code/User/settings.json
 # Install vim plugins
 if [ ! -d ~/.vim/autoload ]; then
     curl -sSL --create-dirs -o ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    vim -c "PlugInstall | quit | quit"
+    echo '-c "PlugInstall | quit | quit"' | xargs -o vim
 else
-    vim -c "PlugUpgrade | PlugUpdate | quit | quit"
+    echo '-c "PlugUpgrade | PlugUpdate | quit | quit"' | xargs -o vim
 fi
 
 popd > /dev/null
