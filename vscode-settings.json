@@ -10,5 +10,6 @@
     "files.hotExit": "off",
     "files.insertFinalNewline": true,
     "editor.renderFinalNewline": false,
-    "workbench.colorTheme": "Default Light+"
+    "workbench.colorTheme": "Default Light+",
+    "editor.minimap.enabled": false
 }
