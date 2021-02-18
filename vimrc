@@ -46,11 +46,19 @@ nnoremap <silent> <Leader>f :NERDTreeToggle<CR>
 
 " Plugins
 if has('win32')
-    let $PLUGGEDDIR = '~/vimfiles/plugged'
+    let $VIMDIR = $USERPROFILE . '/vimfiles'
 else
-    let $PLUGGEDDIR = '~/.vim/plugged'
+    let $VIMDIR = $HOME . '/.vim'
 endif
-call plug#begin($PLUGGEDDIR)
+
+" Install vim-plug
+if empty(glob($VIMDIR . '/autoload/plug.vim'))
+  silent !curl -sLo $VIMDIR/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin($VIMDIR . '/plugged')
     " Language pack
     Plug 'sheerun/vim-polyglot'
 
