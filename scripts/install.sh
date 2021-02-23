@@ -21,6 +21,7 @@ fi
 link    .dotfiles/gitconfig         .gitconfig
 link    .dotfiles/vimrc             .vimrc
 link    ../.dotfiles/ssh_config     .ssh/config
+link    ../../.dotfiles/terminator-config .config/terminator/config
 link    ../../../.dotfiles/vscode-settings.json .config/Code/User/settings.json
 
 popd > /dev/null
