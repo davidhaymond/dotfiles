@@ -1,1 +1,1 @@
-setxkbmap -option ctrl:nocaps -option shift:both_capslock_cancel
+setxkbmap -option ctrl:nocaps -option shift:both_capslock
