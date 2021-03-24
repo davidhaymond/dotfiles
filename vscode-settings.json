@@ -14,5 +14,6 @@
     "editor.minimap.enabled": false,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "update.mode": "none"
+    "update.mode": "none",
+    "extensions.ignoreRecommendations": true
 }
