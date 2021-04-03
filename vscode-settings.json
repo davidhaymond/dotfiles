@@ -15,5 +15,8 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "update.mode": "none",
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.tabWidth": 4,
+    "editor.formatOnSave": true
 }
