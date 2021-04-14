@@ -18,5 +18,6 @@
     "extensions.ignoreRecommendations": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.tabWidth": 4,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "debug.javascript.autoAttachFilter": "smart"
 }
