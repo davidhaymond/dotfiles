@@ -19,5 +19,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.tabWidth": 4,
     "editor.formatOnSave": true,
-    "debug.javascript.autoAttachFilter": "smart"
+    "debug.javascript.autoAttachFilter": "smart",
+    "prettier.requireConfig": true,
+    "editor.codeLens": false
 }
