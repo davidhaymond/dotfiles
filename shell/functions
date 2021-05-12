@@ -20,7 +20,7 @@ clone () {
 }
 
 wttr() {
-    local request="wttr.in/${1-Centralia}?uF"
+    local request="wttr.in/${1-Centralia,WA}?uF"
     [ "$(tput cols)" -lt 125 ] && request+='n'
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
