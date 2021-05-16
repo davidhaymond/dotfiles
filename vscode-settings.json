@@ -1,17 +1,8 @@
 {
-    "vim.insertModeKeyBindingsNonRecursive": [
-        {
-            "before": ["k", "j"],
-            "after": ["<Esc>"]
-        }
-    ],
-    "editor.lineNumbers": "relative",
     "workbench.startupEditor": "none",
     "files.hotExit": "off",
     "files.insertFinalNewline": true,
     "editor.renderFinalNewline": false,
-    "workbench.colorTheme": "Default Dark+",
-    "editor.minimap.enabled": false,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "update.mode": "none",
