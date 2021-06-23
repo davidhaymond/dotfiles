@@ -9,4 +9,4 @@ filetype plugin indent on
 syntax enable
 
 " Enable line numbers
-set number                      
+set number
